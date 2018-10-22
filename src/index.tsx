@@ -1,20 +1,31 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
-import { enthusiasm } from './reducers/index';
-import { StoreState } from './types/index';
-import Hello from './containers/Hello';
 import { Provider } from 'react-redux';
-import { EnthusiasmAction } from './actions/index';
 
-const store = createStore<StoreState, EnthusiasmAction, any, any>(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: 'TypeScript',
+import todoApp from './reducers/index';
+import { StoreState } from './types/index';
+import App from './components/App';
+import { TodoAction } from './actions/index';
+import incrementCounter from './singletons';
+
+// XXX
+const store = createStore<StoreState, TodoAction, any, any>(todoApp, {
+  todos: [{
+    completed: true,
+    id: incrementCounter(),
+    text: 'Consider using Redux',
+  }, {
+    completed: true,
+    id: incrementCounter(),
+    text: 'Keep all state in a single tree',
+  }],
+  visibilityFilter: 'SHOW_ALL',
 });
 
 render(
   <Provider store={store}>
-    <Hello />
+    <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );

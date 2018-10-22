@@ -1,4 +1,12 @@
+export interface Todo {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+export type Filter = string;
+
 export interface StoreState {
-  languageName: string;
-  enthusiasmLevel: number;
+  visibilityFilter: Filter;
+  todos: Todo[];
 }
