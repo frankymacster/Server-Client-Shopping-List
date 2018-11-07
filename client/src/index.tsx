@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import todoApp from './reducers/index';
 import { StoreState } from './types/index';
@@ -21,7 +22,7 @@ const store = createStore<StoreState, TodoAction, any, any>(todoApp, {
     text: 'Keep all state in a single tree',
   }],
   visibilityFilter: 'SHOW_ALL',
-});
+}, applyMiddleware(thunk));
 
 render(
   <Provider store={store}>

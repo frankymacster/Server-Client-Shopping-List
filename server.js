@@ -6,14 +6,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
-app.post('/api/world', (req, res) => {
-  console.log(req.body);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
+  res.send({ products: [{
+    complete: true,
+    id: 1,
+    text: 'abc',
+  }, {
+    complete: false,
+    id: 2,
+    text: 'def',
+  }] });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
