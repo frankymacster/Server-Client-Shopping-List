@@ -12,6 +12,11 @@ import incrementCounter from './singletons';
 
 // XXX
 const store = createStore<StoreState, TodoAction, any, any>(todoApp, {
+  products: {
+    error: undefined,
+    items: [],
+    loading: false,
+  },
   todos: [{
     completed: true,
     id: incrementCounter(),

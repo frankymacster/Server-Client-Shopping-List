@@ -1,10 +1,11 @@
 /* tslint:disable */
 
-import React from "react";
-import { connect } from "react-redux";
-import { fetchProducts } from "../actions/productActions";
+import * as React from 'react';  
+import { connect } from 'react-redux';
+import { fetchProducts } from '../actions/productActions';
+import VisibleTodoList from '../containers/VisibleTodoList';
 
-class ProductList extends React.Component {
+class FetchedTodoList extends React.Component {  
   componentDidMount() {
     this.props.dispatch(fetchProducts());
   }
@@ -20,13 +21,16 @@ class ProductList extends React.Component {
       return <div>Loading...</div>;
     }
 
-    return (
-      <ul>
+    return ( 
+      <div>
+        <ul>
         {products.map(product => (
           <li key={product.id}>{product.text}</li>
         ))}
-      </ul>
-    );
+        </ul>
+        < VisibleTodoList />
+      </div>
+    )
   }
 }
 
@@ -36,4 +40,4 @@ const mapStateToProps = state => ({
   error: state.products.error
 });
 
-export default connect(mapStateToProps)(ProductList);
+export default connect(mapStateToProps)(FetchedTodoList);
