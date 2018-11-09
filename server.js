@@ -7,11 +7,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/hello', (req, res) => {
   res.send({ products: [{
-    complete: true,
+    completed: true,
     id: 1,
     text: 'abc',
   }, {
-    complete: false,
+    completed: false,
     id: 2,
     text: 'def',
   }] });
