@@ -19,7 +19,9 @@ const getVisibleTodos = (todos: Todo[], filter: string) => {
 }
 
 const mapStateToProps = (state: StoreState) => ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter)
+  error: state.products.error,
+  loading: state.products.loading,
+  todos: getVisibleTodos(state.products.items, state.visibilityFilter)
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<TodoAction>) => ({

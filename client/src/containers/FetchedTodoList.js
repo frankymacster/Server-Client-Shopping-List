@@ -11,25 +11,8 @@ class FetchedTodoList extends React.Component {
   }
 
   render() {
-    const { error, loading, products } = this.props;
-
-    if (error) {
-      return <div>Error! {error.message}</div>;
-    }
-
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-
     return ( 
-      <div>
-        <ul>
-        {products.map(product => (
-          <li key={product.id}>{product.text}</li>
-        ))}
-        </ul>
-        < VisibleTodoList />
-      </div>
+      < VisibleTodoList />
     )
   }
 }
